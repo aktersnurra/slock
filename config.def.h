@@ -1,16 +1,20 @@
 /* user and group to drop privileges to */
-static const char *user  = "nobody";
-static const char *group = "nobody";
+static const char *user  = "aktersnurra";
+static const char *group = "aktersnurra";
 
 static const char *colorname[NUMCOLS] = {
 	[BACKGROUND] =   "black",     /* after initialization */
 	[INIT] =   "black",     /* after initialization */
 	[INPUT] =  "#005577",   /* during input */
 	[FAILED] = "#CC3333",   /* wrong password */
+	[PAM] =    "#9400D3",   /* waiting for PAM */
 };
 
 /* treat a cleared input like a wrong password (color) */
 static const int failonclear = 1;
+
+/* PAM service that's used for authentication */
+static const char* pam_service = "login";
 
 /* time in seconds to cancel lock with mouse movement */
 static const int timetocancel = 4;
@@ -47,6 +51,5 @@ ResourcePref resources[] = {
 		{ "color0",       STRING,  &colorname[INIT] },
 		{ "color4",       STRING,  &colorname[INPUT] },
 		{ "color1",       STRING,  &colorname[FAILED] },
-		{ "color3",       STRING,  &colorname[CAPS] },
 };
 
